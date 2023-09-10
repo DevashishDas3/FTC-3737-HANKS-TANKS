@@ -1,7 +1,9 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.TANKM1.powerplay;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
+import org.firstinspires.ftc.teamcode.TANKM1.powerplay.Robot;
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "TeleOp", group = "teleOp")
 public class TeleOp extends LinearOpMode {
@@ -9,11 +11,15 @@ public class TeleOp extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
+
         robot = new Robot(this);
 
         waitForStart();
 
         while(opModeIsActive()){
+            telemetry.addData("Left servo: ", robot.sL.getPosition());
+            telemetry.addData("Right servo: ", robot.sR.getPosition());
+
             if(gamepad1.a) {
                 robot.lF.setDirection(DcMotorSimple.Direction.REVERSE);
                 robot.rB.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -111,20 +117,20 @@ public class TeleOp extends LinearOpMode {
             }
 
             if(gamepad1.left_bumper){
-                robot.sR.setPosition(0.55);
-                robot.sL.setPosition(0.15);
+                robot.sR.setPosition(0.35);
+                robot.sL.setPosition(0.1);
             }
 
             if(gamepad1.right_bumper){
                 robot.sR.setPosition(0.45);
-                robot.sL.setPosition(0.05);
+                robot.sL.setPosition(0.0);
             }
 
             if(gamepad1.left_trigger > 0){
                 robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
                 robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
-                robot.aR.setPower(0.85);
-                robot.aL.setPower(0.85);
+                robot.aR.setPower(0.7);
+                robot.aL.setPower(0.7);
             } else {
                 robot.aR.setPower(0);
                 robot.aL.setPower(0);

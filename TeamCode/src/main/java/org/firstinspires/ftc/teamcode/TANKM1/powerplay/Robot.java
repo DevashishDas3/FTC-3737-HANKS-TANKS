@@ -1,4 +1,8 @@
-package org.firstinspires.ftc.teamcode;
+// Mark I
+// Devashish Das 2022-2023
+// Rohin Sharma 2022-2023
+
+package org.firstinspires.ftc.teamcode.TANKM1.powerplay;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -63,6 +67,15 @@ public class Robot {
 
     public void setMotorPowers(double allPower) {
         setMotorPowers(allPower, allPower, allPower, allPower);
+    }
+
+    public void setArmPowers(double LFPower, double RFPower) {
+        lF.setPower(LFPower);
+        rF.setPower(RFPower);
+    }
+
+    public void setArmPowers(double allPower) {
+        setArmPowers(allPower, allPower);
     }
 
 }

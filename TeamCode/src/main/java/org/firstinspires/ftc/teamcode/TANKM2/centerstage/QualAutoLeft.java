@@ -1,10 +1,11 @@
 
-package org.firstinspires.ftc.teamcode.auton;
+package org.firstinspires.ftc.teamcode.TANKM2.centerstage;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
@@ -12,11 +13,9 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
 import java.util.ArrayList;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "QualAuto", group = "Autonomous")
-public class QualAuto extends LinearOpMode
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "QualAutoLeft", group = "Autonomous")
+public class QualAutoLeft extends LinearOpMode
 {
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -58,6 +57,7 @@ public class QualAuto extends LinearOpMode
     @Override
     public void runOpMode()
     {
+
         robot = new Robot(this);
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
@@ -158,28 +158,98 @@ public class QualAuto extends LinearOpMode
 
 
         if(tagOfInterest == null){
+            robot.sR.setPosition(0.45);
+            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
+            /*
+            initLeftStrafe();
+            encoderDrive(DRIVE_SPEED, 2.5, 2.5, 2.5, 2.5);
+            initForward();
+            encoderDrive(DRIVE_SPEED, 1,1,1,1);
             initUp();
-            encoderLiftDrive(0.85, 2.25,2.25);
-
+            encoderLiftDrive(0.3, 14,14);
+            initDown();
+            encoderLiftDrive(0.3, 5,5);
+            initBackward();
+            encoderDrive(DRIVE_SPEED, 2,2,2,2);
+            initRightStrafe();
+            encoderDrive(DRIVE_SPEED, 2.5, 2.5, 2.5, 2.5);
+            robot.sR.setPosition(0.35);
+            robot.sL.setPosition(0.1);
+            */
         }
         else if(tagOfInterest.id == LEFT){
+            robot.sR.setPosition(0.45);
+            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
+            /*
             initLeftStrafe();
-            encoderDrive(DRIVE_SPEED, 2.25, 2.25, 2.25, 2.25);
+            encoderDrive(DRIVE_SPEED, 2.5, 2.5, 2.5, 2.5);
+            initUp();
+            encoderLiftDrive(0.3, 14,14);
+            initForward();
+            encoderDrive(DRIVE_SPEED, 1,1,1,1);
+            initDown();
+            encoderLiftDrive(0.3, 14,14);
+            initBackward();
+            encoderDrive(DRIVE_SPEED, 2,2,2,2);
+            */
+            initRightStrafe();
+            encoderDrive(DRIVE_SPEED, 12, 12, 12, 12);
+            /*
+            robot.sR.setPosition(0.35);
+            robot.sL.setPosition(0.1);
+             */
         }
 
         else if(tagOfInterest.id == MIDDLE){
+            robot.sR.setPosition(0.45);
+            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
+            /*
+            initLeftStrafe();
+            encoderDrive(DRIVE_SPEED, 2.5, 2.5, 2.5, 2.5);
+            initForward();
+            encoderDrive(DRIVE_SPEED, 1,1,1,1);
+            initUp();
+            encoderLiftDrive(0.3, 14,14);
+            initDown();
+            encoderLiftDrive(0.3, 5,5);
+            initBackward();
+            encoderDrive(DRIVE_SPEED, 2,2,2,2);
+            //
+            initRightStrafe();
+            encoderDrive(DRIVE_SPEED, 2.5, 2.5, 2.5, 2.5);
+            robot.sR.setPosition(0.35);
+            robot.sL.setPosition(0.1);
+            */
         }
         else if(tagOfInterest.id == RIGHT){
+            robot.sR.setPosition(0.45);
+            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
-            initRightStrafe();
-            encoderDrive(DRIVE_SPEED, 2.25, 2.25, 2.25, 2.25);
+            initLeftStrafe();
+            encoderDrive(DRIVE_SPEED, 2.5, 2.5, 2.5, 2.5);
+            /*
+            initForward();
+            encoderDrive(DRIVE_SPEED, 1,1,1,1);
+            initUp();
+            encoderLiftDrive(0.3, 14,14);
+            initDown();
+            encoderLiftDrive(0.3, 5,5);
+            initBackward();
+            encoderDrive(DRIVE_SPEED, 2,2,2,2);
+            */
+            initLeftStrafe();
+            encoderDrive(DRIVE_SPEED, 2.5, 2.5, 2.5, 2.5);
+            /*
+            robot.sR.setPosition(0.35);
+            robot.sL.setPosition(0.1);
+            */
         }
         else{
             initForward();
@@ -198,6 +268,13 @@ public class QualAuto extends LinearOpMode
         robot.rB.setDirection(DcMotorSimple.Direction.REVERSE);
         robot.rF.setDirection(DcMotorSimple.Direction.REVERSE);
         robot.lB.setDirection(DcMotorSimple.Direction.FORWARD);
+    }
+
+    void initBackward(){
+        robot.lF.setDirection(DcMotorSimple.Direction.REVERSE);
+        robot.rB.setDirection(DcMotorSimple.Direction.FORWARD);
+        robot.rF.setDirection(DcMotorSimple.Direction.FORWARD);
+        robot.lB.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     void initRightStrafe(){
@@ -305,6 +382,7 @@ public class QualAuto extends LinearOpMode
                     (robot.lF.isBusy() && robot.rF.isBusy()
                             && robot.lB.isBusy() && robot.rB.isBusy())) {
             }
+
 
             // Stop all motion;
             robot.setMotorPowers(0);
