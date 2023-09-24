@@ -1,4 +1,3 @@
-//Authored by Devashish Das and Rohin Sharma 2023
 package org.firstinspires.ftc.teamcode.TANKM2.centerstage;
 
 import org.opencv.calib3d.Calib3d;
@@ -178,8 +177,6 @@ class AprilTagDetectionPipeline extends OpenCvPipeline
 
     void drawAxisMarker(Mat buf, double length, int thickness, Mat rvec, Mat tvec, Mat cameraMatrix)
     {
-        // The points in 3D space we wish to project onto the 2D image plane.
-        // The origin of the coordinate space is assumed to be in the center of the detection.
         MatOfPoint3f axis = new MatOfPoint3f(
                 new Point3(0,0,0),
                 new Point3(length,0,0),
@@ -187,12 +184,12 @@ class AprilTagDetectionPipeline extends OpenCvPipeline
                 new Point3(0,0,-length)
         );
 
-        // Project those points
+        //Projection
         MatOfPoint2f matProjectedPoints = new MatOfPoint2f();
         Calib3d.projectPoints(axis, rvec, tvec, cameraMatrix, new MatOfDouble(), matProjectedPoints);
         Point[] projectedPoints = matProjectedPoints.toArray();
 
-        // Draw the marker!
+        //Drawing
         Imgproc.line(buf, projectedPoints[0], projectedPoints[1], red, thickness);
         Imgproc.line(buf, projectedPoints[0], projectedPoints[2], green, thickness);
         Imgproc.line(buf, projectedPoints[0], projectedPoints[3], blue, thickness);
@@ -205,8 +202,6 @@ class AprilTagDetectionPipeline extends OpenCvPipeline
         //axis = np.float32([[0,0,0], [0,3,0], [3,3,0], [3,0,0],
         //       [0,0,-3],[0,3,-3],[3,3,-3],[3,0,-3] ])
 
-        // The points in 3D space we wish to project onto the 2D image plane.
-        // The origin of the coordinate space is assumed to be in the center of the detection.
         MatOfPoint3f axis = new MatOfPoint3f(
                 new Point3(-tagWidth/2, tagHeight/2,0),
                 new Point3( tagWidth/2, tagHeight/2,0),
@@ -217,7 +212,7 @@ class AprilTagDetectionPipeline extends OpenCvPipeline
                 new Point3( tagWidth/2,-tagHeight/2,-length),
                 new Point3(-tagWidth/2,-tagHeight/2,-length));
 
-        // Project those points
+        // Projection
         MatOfPoint2f matProjectedPoints = new MatOfPoint2f();
         Calib3d.projectPoints(axis, rvec, tvec, cameraMatrix, new MatOfDouble(), matProjectedPoints);
         Point[] projectedPoints = matProjectedPoints.toArray();
@@ -240,18 +235,6 @@ class AprilTagDetectionPipeline extends OpenCvPipeline
         Imgproc.line(buf, projectedPoints[6], projectedPoints[7], green, thickness);
         Imgproc.line(buf, projectedPoints[4], projectedPoints[7], green, thickness);
     }
-
-    /*
-     * Extracts 6DOF pose from a trapezoid, using a camera intrinsics matrix and the
-     * original size of the tag.
-     *
-     * @param points the points which form the trapezoid
-     * @param cameraMatrix the camera intrinsics matrix
-     * @param tagsizeX the original width of the tag
-     * @param tagsizeY the original height of the tag
-     * @return the 6DOF pose of the camera relative to the tag
-     */
-
 
     Pose poseFromTrapezoid(Point[] points, Mat cameraMatrix, double tagsizeX , double tagsizeY)
     {

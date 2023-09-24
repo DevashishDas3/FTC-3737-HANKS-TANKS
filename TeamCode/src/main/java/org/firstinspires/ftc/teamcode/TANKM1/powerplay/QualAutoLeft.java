@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "QualAutoLeft", group = "Autonomous")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "PowerplayQualAutoLeft", group = "Autonomous")
 public class QualAutoLeft extends LinearOpMode
 {
     OpenCvCamera camera;
@@ -158,6 +158,7 @@ public class QualAutoLeft extends LinearOpMode
 
 
         if(tagOfInterest == null){
+            /*
             robot.sR.setPosition(0.45);
             robot.sL.setPosition(0.0);
             initForward();
@@ -180,8 +181,8 @@ public class QualAutoLeft extends LinearOpMode
             */
         }
         else if(tagOfInterest.id == LEFT){
-            robot.sR.setPosition(0.45);
-            robot.sL.setPosition(0.0);
+//            robot.sR.setPosition(0.45);
+//            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
             /*
@@ -205,8 +206,8 @@ public class QualAutoLeft extends LinearOpMode
         }
 
         else if(tagOfInterest.id == MIDDLE){
-            robot.sR.setPosition(0.45);
-            robot.sL.setPosition(0.0);
+//            robot.sR.setPosition(0.45);
+//            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
             /*
@@ -228,8 +229,8 @@ public class QualAutoLeft extends LinearOpMode
             */
         }
         else if(tagOfInterest.id == RIGHT){
-            robot.sR.setPosition(0.45);
-            robot.sL.setPosition(0.0);
+//            robot.sR.setPosition(0.45);
+//            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
             initLeftStrafe();
@@ -291,56 +292,56 @@ public class QualAutoLeft extends LinearOpMode
         robot.lB.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
-    void initUp(){
-        robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
-        robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
-    }
+//    void initUp(){
+//        robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
+//        robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
+//    }
+//
+//    void initDown(){
+//        robot.aR.setDirection(DcMotorSimple.Direction.FORWARD);
+//        robot.aL.setDirection(DcMotorSimple.Direction.REVERSE);
+//    }
 
-    void initDown(){
-        robot.aR.setDirection(DcMotorSimple.Direction.FORWARD);
-        robot.aL.setDirection(DcMotorSimple.Direction.REVERSE);
-    }
-
-    public void encoderLiftDrive(double speed, double aL, double aR) {
-        int newALTarget;
-        int newARTarget;
-
-        // Ensure that the opmode is still active
-        if (opModeIsActive()) {
-
-            // Determine new target position, and pass to motor controller
-            newALTarget = robot.aL.getCurrentPosition() + (int)(aL * COUNTS_PER_INCH);
-            newARTarget = robot.aR.getCurrentPosition() + (int)(aR * COUNTS_PER_INCH);
-
-            robot.aL.setTargetPosition(newALTarget);
-            robot.aR.setTargetPosition(newARTarget);
-
-            // Turn On RUN_TO_POSITION
-            robot.setArmDrivetrainMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-            // reset the timeout time and start motion.
-            runtime.reset();
-            robot.aL.setPower(Math.abs(speed));
-            robot.aR.setPower(Math.abs(speed));
-
-            // keep looping while we are still active, and there is time left, and both motors are running.
-            // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
-            // its target position, the motion will stop.  This is "safer" in the event that the robot will
-            // always end the motion as soon as possible.
-            // However, if you require that BOTH motors have finished their moves before the robot continues
-            // onto the next step, use (isBusy() || isBusy()) in the loop test.
-            while (opModeIsActive() &&
-                    (robot.aL.isBusy() && robot.aR.isBusy())) {
-            }
-
-            // Stop all motion;
-            robot.setMotorPowers(0);
-
-            // Turn off RUN_TO_POSITION
-            robot.setArmDrivetrainMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        }
-    }
+//    public void encoderLiftDrive(double speed, double aL, double aR) {
+//        int newALTarget;
+//        int newARTarget;
+//
+//        // Ensure that the opmode is still active
+//        if (opModeIsActive()) {
+//
+//            // Determine new target position, and pass to motor controller
+//            newALTarget = robot.aL.getCurrentPosition() + (int)(aL * COUNTS_PER_INCH);
+//            newARTarget = robot.aR.getCurrentPosition() + (int)(aR * COUNTS_PER_INCH);
+//
+//            robot.aL.setTargetPosition(newALTarget);
+//            robot.aR.setTargetPosition(newARTarget);
+//
+//            // Turn On RUN_TO_POSITION
+//            robot.setArmDrivetrainMode(DcMotor.RunMode.RUN_TO_POSITION);
+//
+//            // reset the timeout time and start motion.
+//            runtime.reset();
+//            robot.aL.setPower(Math.abs(speed));
+//            robot.aR.setPower(Math.abs(speed));
+//
+//            // keep looping while we are still active, and there is time left, and both motors are running.
+//            // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
+//            // its target position, the motion will stop.  This is "safer" in the event that the robot will
+//            // always end the motion as soon as possible.
+//            // However, if you require that BOTH motors have finished their moves before the robot continues
+//            // onto the next step, use (isBusy() || isBusy()) in the loop test.
+//            while (opModeIsActive() &&
+//                    (robot.aL.isBusy() && robot.aR.isBusy())) {
+//            }
+//
+//            // Stop all motion;
+//            robot.setMotorPowers(0);
+//
+//            // Turn off RUN_TO_POSITION
+//            robot.setArmDrivetrainMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//
+//        }
+//    }
 
     public void encoderDrive(double speed, double lF, double rF, double lB, double rB) {
         int newLFTarget;

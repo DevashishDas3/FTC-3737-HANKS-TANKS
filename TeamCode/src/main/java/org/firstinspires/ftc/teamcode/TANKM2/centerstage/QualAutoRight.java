@@ -157,8 +157,8 @@ public class QualAutoRight extends LinearOpMode
 
 
         if(tagOfInterest == null){
-            robot.sR.setPosition(0.45);
-            robot.sL.setPosition(0.0);
+//            robot.sR.setPosition(0.45);
+//            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
             /*
@@ -181,8 +181,8 @@ public class QualAutoRight extends LinearOpMode
 
         }
         else if(tagOfInterest.id == LEFT){
-            robot.sR.setPosition(0.45);
-            robot.sL.setPosition(0.0);
+//            robot.sR.setPosition(0.45);
+//            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
             initRightStrafe();
@@ -207,8 +207,8 @@ public class QualAutoRight extends LinearOpMode
         }
 
         else if(tagOfInterest.id == MIDDLE){ //middle
-            robot.sR.setPosition(0.45);
-            robot.sL.setPosition(0.0);
+//            robot.sR.setPosition(0.45);
+//            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
             /*
@@ -231,8 +231,8 @@ public class QualAutoRight extends LinearOpMode
 
         }
         else if(tagOfInterest.id == RIGHT){
-            robot.sR.setPosition(0.45);
-            robot.sL.setPosition(0.0);
+//            robot.sR.setPosition(0.45);
+//            robot.sL.setPosition(0.0);
             initForward();
             encoderDrive(DRIVE_SPEED, 4.5, 4.5, 4.5, 4.5);
 
@@ -298,13 +298,13 @@ public class QualAutoRight extends LinearOpMode
     }
 
     void initUp(){
-        robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
-        robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
+//        robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
+//        robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
     void initDown(){
-        robot.aR.setDirection(DcMotorSimple.Direction.FORWARD);
-        robot.aL.setDirection(DcMotorSimple.Direction.REVERSE);
+//        robot.aR.setDirection(DcMotorSimple.Direction.FORWARD);
+//        robot.aL.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void encoderLiftDrive(double speed, double aL, double aR) {
@@ -315,19 +315,19 @@ public class QualAutoRight extends LinearOpMode
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newALTarget = robot.aL.getCurrentPosition() + (int)(aL * COUNTS_PER_INCH);
-            newARTarget = robot.aR.getCurrentPosition() + (int)(aR * COUNTS_PER_INCH);
+//            newALTarget = robot.aL.getCurrentPosition() + (int)(aL * COUNTS_PER_INCH);
+//            newARTarget = robot.aR.getCurrentPosition() + (int)(aR * COUNTS_PER_INCH);
 
-            robot.aL.setTargetPosition(newALTarget);
-            robot.aR.setTargetPosition(newARTarget);
+//            robot.aL.setTargetPosition(newALTarget);
+//            robot.aR.setTargetPosition(newARTarget);
 
             // Turn On RUN_TO_POSITION
             robot.setArmDrivetrainMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             // reset the timeout time and start motion.
             runtime.reset();
-            robot.aL.setPower(Math.abs(speed));
-            robot.aR.setPower(Math.abs(speed));
+//            robot.aL.setPower(Math.abs(speed));
+//            robot.aR.setPower(Math.abs(speed));
 
             // keep looping while we are still active, and there is time left, and both motors are running.
             // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
@@ -335,9 +335,9 @@ public class QualAutoRight extends LinearOpMode
             // always end the motion as soon as possible.
             // However, if you require that BOTH motors have finished their moves before the robot continues
             // onto the next step, use (isBusy() || isBusy()) in the loop test.
-            while (opModeIsActive() &&
-                    (robot.aL.isBusy() && robot.aR.isBusy())) {
-            }
+//            while (opModeIsActive() &&
+//                    (robot.aL.isBusy() && robot.aR.isBusy())) {
+//            }
 
             // Stop all motion;
             robot.setMotorPowers(0);

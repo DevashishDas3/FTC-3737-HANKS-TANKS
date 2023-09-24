@@ -15,8 +15,8 @@ public class TeleOp extends LinearOpMode {
         waitForStart();
 
         while(opModeIsActive()){
-            telemetry.addData("Left servo: ", robot.sL.getPosition());
-            telemetry.addData("Right servo: ", robot.sR.getPosition());
+//            telemetry.addData("Left servo: ", robot.sL.getPosition());
+//            telemetry.addData("Right servo: ", robot.sR.getPosition());
 
             if(gamepad1.a) {
                 robot.lF.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -115,43 +115,43 @@ public class TeleOp extends LinearOpMode {
             }
 
             if(gamepad1.left_bumper){
-                robot.sR.setPosition(0.35);
-                robot.sL.setPosition(0.1);
+//                robot.sR.setPosition(0.35);
+//                robot.sL.setPosition(0.1);
             }
 
             if(gamepad1.right_bumper){
-                robot.sR.setPosition(0.45);
-                robot.sL.setPosition(0.0);
+//                robot.sR.setPosition(0.45);
+//                robot.sL.setPosition(0.0);
             }
 
             if(gamepad1.left_trigger > 0){
-                robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
-                robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
-                robot.aR.setPower(0.7);
-                robot.aL.setPower(0.7);
+//                robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
+//                robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
+//                robot.aR.setPower(0.7);
+//                robot.aL.setPower(0.7);
             } else {
-                robot.aR.setPower(0);
-                robot.aL.setPower(0);
+//                robot.aR.setPower(0);
+//                robot.aL.setPower(0);
             }
 
             if(gamepad1.right_trigger > 0){
-                robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
-                robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
-                robot.aR.setPower(0.25);
-                robot.aL.setPower(0.25);
+//                robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
+//                robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
+//                robot.aR.setPower(0.25);
+//                robot.aL.setPower(0.25);
             } else {
-                robot.aR.setPower(0);
-                robot.aL.setPower(0);
+//                robot.aR.setPower(0);
+//                robot.aL.setPower(0);
             }
 
             if(gamepad1.dpad_down){
-                robot.aR.setDirection(DcMotorSimple.Direction.FORWARD);
-                robot.aL.setDirection(DcMotorSimple.Direction.REVERSE);
-                robot.aR.setPower(0.35);
-                robot.aL.setPower(0.35);
+//                robot.aR.setDirection(DcMotorSimple.Direction.FORWARD);
+//                robot.aL.setDirection(DcMotorSimple.Direction.REVERSE);
+//                robot.aR.setPower(0.35);
+//                robot.aL.setPower(0.35);
             } else {
-                robot.aR.setPower(0);
-                robot.aL.setPower(0);
+//                robot.aR.setPower(0);
+//                robot.aL.setPower(0);
             }
         }
     }

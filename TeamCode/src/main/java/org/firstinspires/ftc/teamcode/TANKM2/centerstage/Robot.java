@@ -23,27 +23,27 @@ public class Robot {
     DcMotor rB;
     String rBInit = "rB";
 
-    DcMotor aR;
-    String aRInit = "aR";
-
-    DcMotor aL;
-    String aLInit = "aL";
-
-    Servo sL;
-    String sLInit = "sL";
-
-    Servo sR;
-    String sRInit = "sL";
+//    DcMotor aR;
+//    String aRInit = "aR";
+//
+//    DcMotor aL;
+//    String aLInit = "aL";
+//
+//    Servo sL;
+//    String sLInit = "sL";
+//
+//    Servo sR;
+//    String sRInit = "sL";
 
     public Robot(LinearOpMode ln){
         lF = ln.hardwareMap.dcMotor.get(lFInit);
         lB = ln.hardwareMap.dcMotor.get(lBInit);
         rF = ln.hardwareMap.dcMotor.get(rFInit);
         rB = ln.hardwareMap.dcMotor.get(rBInit);
-        aR = ln.hardwareMap.dcMotor.get(aRInit);
-        aL = ln.hardwareMap.dcMotor.get(aLInit);
-        sL = ln.hardwareMap.servo.get(sLInit);
-        sR = ln.hardwareMap.servo.get(sRInit);
+//        aR = ln.hardwareMap.dcMotor.get(aRInit);
+//        aL = ln.hardwareMap.dcMotor.get(aLInit);
+//        sL = ln.hardwareMap.servo.get(sLInit);
+//        sR = ln.hardwareMap.servo.get(sRInit);
     }
 
     public void setDrivetrainMode(DcMotor.RunMode mode) {
@@ -54,8 +54,8 @@ public class Robot {
     }
 
     public void setArmDrivetrainMode(DcMotor.RunMode mode) {
-        aL.setMode(mode);
-        aR.setMode(mode);
+//        aL.setMode(mode);
+//        aR.setMode(mode);
     }
 
     public void setMotorPowers(double LFPower, double RFPower, double LBPower, double RBPower) {
