@@ -23,17 +23,6 @@ public class Robot {
     DcMotor rB;
     String rBInit = "rB";
 
-//    DcMotor aR;
-//    String aRInit = "aR";
-//
-//    DcMotor aL;
-//    String aLInit = "aL";
-//
-//    Servo sL;
-//    String sLInit = "sL";
-//
-//    Servo sR;
-//    String sRInit = "sL";
 
     public Robot(LinearOpMode ln){
         lF = ln.hardwareMap.dcMotor.get(lFInit);

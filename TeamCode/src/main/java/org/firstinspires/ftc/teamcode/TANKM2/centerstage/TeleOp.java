@@ -15,9 +15,6 @@ public class TeleOp extends LinearOpMode {
         waitForStart();
 
         while(opModeIsActive()){
-//            telemetry.addData("Left servo: ", robot.sL.getPosition());
-//            telemetry.addData("Right servo: ", robot.sR.getPosition());
-
             if(gamepad1.a) {
                 robot.lF.setDirection(DcMotorSimple.Direction.REVERSE);
                 robot.rB.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -115,33 +112,26 @@ public class TeleOp extends LinearOpMode {
             }
 
             if(gamepad1.left_bumper){
-//                robot.sR.setPosition(0.35);
-//                robot.sL.setPosition(0.1);
+//               // geecko in
+                
             }
 
             if(gamepad1.right_bumper){
-//                robot.sR.setPosition(0.45);
-//                robot.sL.setPosition(0.0);
+//                // geecko out
             }
 
             if(gamepad1.left_trigger > 0){
-//                robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
-//                robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
-//                robot.aR.setPower(0.7);
-//                robot.aL.setPower(0.7);
+                robot.elbow.setDirection(FORWARD);
+                robot.elbow.setPower(1);
             } else {
-//                robot.aR.setPower(0);
-//                robot.aL.setPower(0);
+                robot.elbow.setPower(0);
             }
 
             if(gamepad1.right_trigger > 0){
-//                robot.aR.setDirection(DcMotorSimple.Direction.REVERSE);
-//                robot.aL.setDirection(DcMotorSimple.Direction.FORWARD);
-//                robot.aR.setPower(0.25);
-//                robot.aL.setPower(0.25);
+                robot.elbow.setDirection(REVERSE);
+                robot.elbow.setPower(1);
             } else {
-//                robot.aR.setPower(0);
-//                robot.aL.setPower(0);
+                robot.elbow.setPower(0);
             }
 
             if(gamepad1.dpad_down){
@@ -152,6 +142,14 @@ public class TeleOp extends LinearOpMode {
             } else {
 //                robot.aR.setPower(0);
 //                robot.aL.setPower(0);
+            }
+
+            if(gamepad1.left_stick_y > 0){
+                robot.finger.setTargetPosition(); //find pos
+            }
+
+            if(gamepad1.left_stick_y > 0){
+                robot.finger.setTargetPosition();
             }
         }
     }
