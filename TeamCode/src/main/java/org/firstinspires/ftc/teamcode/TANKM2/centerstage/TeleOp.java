@@ -121,14 +121,14 @@ public class TeleOp extends LinearOpMode {
             }
 
             if(gamepad1.left_trigger > 0){
-                robot.elbow.setDirection(FORWARD);
+                robot.elbow.setDirection(DcMotorSimple.Direction.FORWARD);
                 robot.elbow.setPower(1);
             } else {
                 robot.elbow.setPower(0);
             }
 
             if(gamepad1.right_trigger > 0){
-                robot.elbow.setDirection(REVERSE);
+                robot.elbow.setDirection(DcMotorSimple.Direction.REVERSE);
                 robot.elbow.setPower(1);
             } else {
                 robot.elbow.setPower(0);
@@ -145,11 +145,11 @@ public class TeleOp extends LinearOpMode {
             }
 
             if(gamepad1.left_stick_y > 0){
-                robot.finger.setTargetPosition(); //find pos
+                robot.finger.setPosition(0); //find pos
             }
 
             if(gamepad1.left_stick_y > 0){
-                robot.finger.setTargetPosition();
+                robot.finger.setPosition(0); //find pos
             }
         }
     }

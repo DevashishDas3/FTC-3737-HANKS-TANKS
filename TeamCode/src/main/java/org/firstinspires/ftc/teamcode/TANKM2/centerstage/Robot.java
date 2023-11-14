@@ -34,6 +34,9 @@ public class Robot {
 
     Servo finger;
     String fingerInit = "finger";
+
+    Servo launch;
+    String launchInit = "launch";
     
 
     public Robot(LinearOpMode ln){
@@ -45,6 +48,7 @@ public class Robot {
         elbow = ln.hardwareMap.dcMotor.get(elbowInit);
         wrist = ln.hardwareMap.servo.get(wristInit);
         finger = ln.hardwareMap.servo.get(fingerInit);
+        launch = ln.hardwareMap.servo.get(launchInit);
     }
 
     public void setDrivetrainMode(DcMotor.RunMode mode) {
